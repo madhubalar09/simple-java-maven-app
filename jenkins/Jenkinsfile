@@ -22,11 +22,12 @@ pipeline {
                         echo "This is testB"
                     }
                 }
-                post{
+                
+                }
+            post{
                     success{
                     archiveArtifacts artifacts : '**/target/*.jar'
                     }
-                }
     
             }
         }
