@@ -9,10 +9,25 @@ pipeline {
                 echo "This the build"
                 sh 'mvn clean package'
             }
-            post{
-                success{
-                    archiveArtifacts artifacts : '**/target/*.jar'
+        }
+        stage ('Test'){
+            parallel{
+                stage('testA'){
+                    steps{
+                    echo "This is testA"
+                    }
                 }
+                stage ('testB'){
+                    steps{
+                        echo "This is testB"
+                    }
+                }
+                post{
+                    success{
+                    archiveArtifacts artifacts : '**/target/*.jar'
+                    }
+                }
+    
             }
         }
         
