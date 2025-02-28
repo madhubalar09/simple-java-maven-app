@@ -24,7 +24,7 @@ pipeline {
 
             parallel{
                 stage('testA'){
-                    agent { label 'DevServer' }
+                    agent any
                     steps{
                     echo "This is testA"
                     sh 'mvn test'
@@ -32,7 +32,7 @@ pipeline {
                     }
                 }
                 stage ('testB'){
-                    agent { label 'DevServer' }
+                    agent any
                     steps{
                         echo "This is testB"
                         sh 'mvn test'
@@ -53,6 +53,7 @@ pipeline {
         stage ('deploy'){
             when {expression {params.select_environment == 'dev'}
             beforeAgent true}
+            agent {label 'DevServer'}
             steps{
                 dir ("/var/www/html"){
                     unstash "maven-build"
