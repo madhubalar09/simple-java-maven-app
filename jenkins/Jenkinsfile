@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'DevServer'
-    }
+
     tools{
         maven 'mymaven'
     }
@@ -27,15 +25,13 @@ pipeline {
                     agent any
                     steps{
                     echo "This is testA"
-                    sh 'mvn test'
-                    echo "$NAME"
+                     echo "$NAME"
                     }
                 }
                 stage ('testB'){
                     agent any
                     steps{
                         echo "This is testB"
-                        sh 'mvn test'
                     }
                 }
                 
