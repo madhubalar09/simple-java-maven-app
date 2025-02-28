@@ -3,6 +3,13 @@ pipeline {
     tools{
         maven 'mymaven'
     }
+    parameters{
+        string defaultvalue 'Bala' , name 'LASTNAME'
+    }
+    environment{
+        NAME = "Madhu"
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -15,6 +22,7 @@ pipeline {
                 stage('testA'){
                     steps{
                     echo "This is testA"
+                    echo "$NAME"
                     }
                 }
                 stage ('testB'){
