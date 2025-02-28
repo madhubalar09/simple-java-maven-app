@@ -4,7 +4,7 @@ pipeline {
         maven 'mymaven'
     }
     parameters{
-        string defaultvalue 'Bala' , name 'LASTNAME'
+        string defaultvalue: 'Bala' , name: 'LASTNAME'
     }
     environment{
         NAME = "Madhu"
