@@ -41,7 +41,7 @@ pipeline {
 
             post{
                     success{
-                    dir ("mavenproject/target"){
+                    dir ("target/"){
                         stash name: "maven-build" , includes: "*.jar"
                     }
                     }
